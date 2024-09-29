@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ 
+<!-- Primary Meta Tags -->
+<title>Appasha - Backend Developer</title>
+
+<meta name="title" content="Appasha - Full Stack Developer">
+<meta name="description" content="Appasha, a Full Stack Developer with hands-on experience in backend and frontend development, specializing in Java, Spring Boot, and Thymeleaf. Explore my portfolio and blog for insights into my journey.">
+<meta name="keywords" content="Appasha, Full Stack Developer, Backend Developer, Frontend Developer, Java Developer, Spring Boot, Thymeleaf, Portfolio, Blog">
+<meta name="author" content="Appasha">
+
+<!-- Open Graph Meta Tags / Facebook -->
+<meta property="og:title" content="Appasha - Full Stack Developer">
+<meta property="og:description" content="Full Stack Developer with hands-on experience in Java, Spring Boot, and Thymeleaf. My focus is on building functional, user-friendly applications. Check out my blog for more about my journey.">
+<meta property="og:image" content="assets/images/banner.webp">
+<meta property="og:url" content="/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Appasha - Full Stack Developer">
+<meta name="twitter:description" content="Backend and Frontend Developer specializing in Java, Spring Boot, and Thymeleaf. Explore my blog and portfolio for insights on software development.">
+<meta name="twitter:image" content="assets/images/banner.webp">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts: Rubik -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik&amp;display=swap">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- Preload Important resources -->
+    <link rel="preload" href="assets/css/aos.css" as="style" >
+    <link rel="preload" href="assets/css/owl.carousel.min.css" as="style" >
+    <link rel="preload" href="assets/css/bootstrap.min.css" as="style" />
+    <link rel="preload" href="assets/css/bootstrap-icons.min.css" as="style" />
+    <link rel="preload" href="assets/css/style.css" as="style" />
+
+
+    <!-- MS-Clarity Analytics -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "#");
+    </script>
+
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+</head>
+
+<body data-bs-theme="dark" data-bs-spy="scroll" data-bs-target="#navbar">
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+    
+    <!-- Header -->
+    <header id="header">
+        <nav id="navbar" class="navbar navbar-expand-md">
+            <div class="container">
+                <a href="/" class="navbar-brand logo">
+                    <span><</span>
+                    <span class="logo-name">Appash Poojari</span>
+                    <span>/></span>
+                </a>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarMenu">
+                    <div class="offcanvas-header">
+                        <a href="/" class="offcanvas-title navbar-brand logo" id="offcanvasNavbarMenu" data-aos="fade-down" data-aos-delay="600">
+                            <span><</span>
+                            <span class="logo-name">Appash Poojari</span>
+                            <span>/></span>
+                        </a>
+                        <button type="button" class="navbar-toggler" data-bs-dismiss="offcanvas" aria-label="Close Navigation Menu"><i class="bi bi-x toggle-icon"></i></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav nav-underline justify-content-end flex-grow-1">
+                            <li class="nav-item" data-aos="fade-down" data-aos-delay="500" data-bs-dismiss="offcanvas"><a href="#hero" class="nav-link active" aria-current="page">Home</a></li>
+                            <li class="nav-item" data-aos="fade-down" data-aos-delay="600" data-bs-dismiss="offcanvas"><a href="#about" class="nav-link">About</a></li>
+                            <li class="nav-item" data-aos="fade-down" data-aos-delay="700" data-bs-dismiss="offcanvas" ><a href="#skills" class="nav-link">Skills</a></li>
+                            <li class="nav-item" data-aos="fade-down" data-aos-delay="800" data-bs-dismiss="offcanvas"><a href="#blogs" class="nav-link">Blogs</a></li>
+                            <li class="nav-item" data-aos="fade-down" data-aos-delay="900" data-bs-dismiss="offcanvas"><a href="#projects" class="nav-link">Projects</a></li>
+                            <li class="nav-item" data-aos="fade-down" data-aos-delay="1000" data-bs-dismiss="offcanvas"><a href="#contact" class="nav-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn border-0" id="switchTheme" data-aos="fade-down" data-aos-delay="600"><i class="bi bi-brightness-high-fill"></i></button>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle Navigation Menu" data-aos="fade-down" data-aos-delay="600"><i class="bi bi-list toggle-icon"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero">
+        <div class="container">
+            <div class="row about-content">
+                <div class="col-lg-5 order-lg-2">
+                    <div class="hero-portrait">
+                        <div class="pic" data-aos="fade-up" data-aos-delay="600"></div>
+                    </div>
+                </div>
+                <div class="col-lg-7 order-lg-1 hero-content">
+                    <span class="h3" data-aos="fade-up" data-aos-delay="0">Namasté, I'm</span>
+                    <h1 class="name" data-aos="fade-up" data-aos-delay="200"><span>Appash Poojari</span></h1>
+                    <button type="button" class="btn btn-sm mt-3 mb-3 btn-showcase" data-aos="fade-up" data-aos-delay="400">
+                        <i class="bi bi-stars"></i> Software Developer
+                    </button>
+                    <p class="tagline mb-3" data-aos="fade-up" data-aos-delay="600">
+                        Started <span class="underline">unintentionally</span> with messy Discord bot templates in 2017. Now, creating beautiful and responsive websites and templates with implementing <Str>JAVA</Str> (backend development) for everyone to explore! But this time <span class="underline">intentionally</span>.
+                    </p>
+                    <div class="social-icons pb-2 pt-2 mb-2">
+                        <a href="https://github.com/Appash047" target="_blank" class="github" data-aos="fade-up" data-aos-delay="620"><i class="bi bi-github"></i></a>
+                        <a href="https://www.instagram.com/appash_poojari/" target="_blank" class="instagram" data-aos="fade-up" data-aos-delay="660"><i class="bi bi-instagram"></i></a>
+                        <a href="#" target="_blank" class="youtube" data-aos="fade-up" data-aos-delay="680"><i class="bi bi-youtube"></i></a>
+                        <a href="https://www.linkedin.com/in/appash/" target="_blank" class="linkedin" data-aos="fade-up" data-aos-delay="690"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                    <div class="d-flex call-to-action">
+                        <a href="#contact" data-aos="fade-up" data-aos-delay="700"><button type="button" class="btn me-4 primary-bg-btn"><i class="bi bi-envelope"></i> Contact Me</button></a>
+                        <a href="/Appash.pdf" target="_blank" data-aos="fade-up" data-aos-delay="810"><button type="button" class="btn btn-light secondary-bg-btn">View Resume <i class="bi bi-file-earmark-text"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- About Me -->
+    <section id="about">
+        <div class="container">
+            <h6 class="text-center"><span class="btn btn-sm theme-button theme-text">But who am I?</span></h6>
+            <h2 class="section-heading text-center">About Me</h2>
+            <p class="text-center muted-text mt-3 mb-4">My store in a nutshell ;)</p>
+            <div class="row justify-content-center" data-aos="fade-down" data-aos-delay="200">
+                <div class="col-lg-5 about-portrait">
+                    <img src="assets/images/Appu.png" class="img-fluid pic" alt="About Me Portrait">
+                </div>
+                <div class="col-lg-7">
+                    <p class="bio">
+                        Hey there, I’m P. Appasha, a software developer from Hyderabad, India.
+I completed my Master’s degree in Computer Applications and have hands-on experience in both backend and frontend development. My journey started during my training at Indian Eagle Pvt Ltd, where I worked on multiple full-stack projects, which giving me a deep dive into Java, Spring Boot, and Thymeleaf.
+                        </br></br>
+                        My main goal as a developer is simple: to build software that is both functional and user-friendly. I enjoy developing applications that solve real-world problems, collaborating in teams, and always improving my coding skills. Whether it’s designing sleek interfaces or managing complex backend systems, I’m constantly driven by the challenge of creating efficient solutions.
+                        </br></br>
+                        When I’m not coding, I enjoy exploring new technologies and tools, and I love sharing my tech experiences with others. I also occasionally write Blogs about my journey, you can check out my gaming blog, <a href="#" target="_blank">Javadev</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h6 class="text-center"><span class="btn btn-sm theme-button theme-text">What do I know?</span></h6>
+            <h2 class="section-heading text-center">Java Technology</h2>
+            <div class="row justify-content-center row-cols-2 row-cols-md-3 row-cols-lg-6 mt-4 gy-4 skills-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/new/core-java.png" alt="Java">
+                        <p class="skill-name">Java</p>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/new/servlet.png" alt="Servlet">
+                        <p class="skill-name">Servlet</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/jsp.png" alt="JSP">
+                        <p class="skill-name">JSP</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/spring-boot.png" alt="Spring-boot">
+                        <p class="skill-name">Spring-boot</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/hibernate.png" alt="Hibernate">
+                        <p class="skill-name">Hibernate</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/new/design-patterns.png" alt="Design-Patterns">
+                        <p class="skill-name">Design-Patterns</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/maven.png" alt="Maven">
+                        <p class="skill-name">Maven</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/new/java-8.png" alt="Java 8">
+                        <p class="skill-name">Java 8</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/new/collections.png" alt="Collections">
+                        <p class="skill-name">Collections</p>
+                    </div>
+                </div>
+                <div class="col">
+                  <div class="skill">
+                    <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/microservices.png" alt="Microservices">
+                    <p class="skill-name">Microservices</p>
+                  </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/junit.png" alt="JUnit">
+                        <p class="skill-name">JUnit</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/postman.png" alt="Postman">
+                        <p class="skill-name">Postman</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/jira.png" alt="Jira">
+                        <p class="skill-name">Jira</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/sql.png" alt="SQL">
+                        <p class="skill-name">SQL</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/git.png" alt="Git">
+                        <p class="skill-name">Git</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/mysql.png" alt="MySQL">
+                        <p class="skill-name">MySQL</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://www.thymeleaf.org/images/thymeleaf.png" alt="Thymeleaf">
+                        <p class="skill-name">Thymeleaf</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/tutorial/log4j/images/log4j-tutorial.png" alt="Log4j">
+                        <p class="skill-name">Log4j</p>
+                    </div>
+                </div>
+    
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="/assets/images/skills/HTML.svg" alt="HTML">
+                        <p class="skill-name">HTML</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="/assets/images/skills/CSS.svg" alt="CSS"/>
+                        <p class="skill-name">CSS</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="/assets/images/skills/JS.svg" alt="JavaScript">
+                        <p class="skill-name">JS</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="/assets/images/skills/Bootstrap.svg" alt="Bootstrap">
+                        <p class="skill-name">Bootstrap</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="/assets/images/tools/vscode.svg" alt="VSCode">
+                        <p class="skill-name">VSCode</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="/assets/images/tools/github.svg" alt="Github">
+                        <p class="skill-name">Github</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="/assets/images/tools/canva.svg" alt="Canva">
+                        <p class="skill-name">Canva</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://static.javatpoint.com/images/homeicon/intellij.png" alt="Intellij Idea">
+                        <p class="skill-name">Intellij Idea</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Stack_Overflow_icon.svg/2048px-Stack_Overflow_icon.svg.png" alt="Stack Overflow">
+                        <p class="skill-name">Stack Overflow</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="skill">
+                        <img class="skill-image" src="/assets/images/tools/ChatGPT.svg" alt="ChatGPT">
+                        <p class="skill-name">ChatGPT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Blogs -->
+     <section id="blogs">
+        <div class="container">
+            <h6 class="text-center"><span class="btn btn-sm theme-button theme-text">Do I Write?</span></h6>
+            <h2 class="section-heading text-center">My Blogs</h2>
+            <p class="text-center muted-text mt-3 mb-4">Here are some written pieces that you can check out if you're interested.</p>
+            <div class="row justify-content-center gy-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card article-card">
+                        <div class="banner-container position-relative">
+                            <div class="position-absolute top-0 end-0">
+                                <span class="badge">News</span>
+                            </div>
+                            <img src="https://cdn.pixabay.com/photo/2017/06/26/19/03/news-2444778_960_720.jpg" class="card-img-top banner" alt="How to Update Township Game">
+                        </div>                        
+                        <div class="card-body">
+                            <a href="#"></a><h6 class="card-title">We Update News state wise !</h6></a>
+                            <p class="card-text description">Bolg under Construction once completedyou can experience all the latest features.</p>
+                            <a href="#" class="text-decoration-none" target="_blank"><span class="read-more">Read More <i class="bi bi-arrow-up-right"></i></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card article-card">
+                        <div class="banner-container position-relative">
+                            <div class="position-absolute top-0 end-0">
+                                <span class="badge">Auto </span>
+                            </div>
+                            <img src="https://static.independent.co.uk/2023/10/26/17/tech%20christmas%20gift%20guide.png" class="card-img-top banner" alt="Most Popular Mobile Games in India">
+                        </div>                        
+                        <div class="card-body">
+                            <a href="#"></a><h6 class="card-title">Auto & Gadget Daily</h6></a>
+                            <p class="card-text description">Bolg under Construction once completedyou can experience all the latest features.</p>
+                            <a href="#" class="text-decoration-none" target="_blank"><span class="read-more">Read More <i class="bi bi-arrow-up-right"></i></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card article-card">
+                        <div class="banner-container position-relative">
+                            <div class="position-absolute top-0 end-0">
+                                <span class="badge">Jobs</span>
+                            </div>
+                            <img src="https://jkadworld.com/wp-content/uploads/2024/01/jobs-new.jpg" class="card-img-top banner" alt="Best Discord Banners and GIFs">
+                        </div>                        
+                        <div class="card-body">
+                            <a href="#"></a><h6 class="card-title">We post daily job updates</h6></a>
+                            <p class="card-text description">Bolg under Construction once completedyou can experience all the latest features.</p>
+                            <a href="#" class="text-decoration-none" target="_blank"><span class="read-more">Read More <i class="bi bi-arrow-up-right"></i></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h6 class="text-center"><span class="btn btn-sm theme-button theme-text">What I've done?</span></h6>
+            <h2 class="section-heading text-center">Projects</h2>
+            <div class="row justify-content-center mt-4 gy-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card project-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="col-2">
+                                    <img src="https://www.rentallscript.com/resources/content/images/2021/10/Online-Car-Reservation-System.png" class="img-fluid icon" alt="PfpFinder Logo">
+                                </div>
+                                <div class="col-7 p-0">
+                                    <a href="#" class="card-title title" target="_blank">Car Rentel</a>
+                                    <p class="stacks m-0">JAVA | SQL | HTML | CSS | JS</p>
+                                </div>
+                                <div class="col-3 align-middle">
+                                    <a href="#" class="btn btn-sm primary-bg-btn rounded-5" target="_blank">Visit <i class="bi bi-arrow-up-right-circle-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description-container">
+                            <p class="description">Find the best Car for rent in you city.</p>
+                        </div>
+                        <br>
+                        <div class="banner-container">
+                            <div class="overlay">
+                                <a href="#" class="btn" target="_blank"><i class="bi bi-arrow-up-right-circle-fill"></i></a>
+                            </div>
+                            <img src="https://www.rentallscript.com/resources/content/images/2021/10/Online-Car-Reservation-System.png" class="card-img-top banner" alt="PfpFinder Banner">
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card project-card cursor-not-allowed">
+                        <div class="card-body ">
+                            <div class="d-flex align-items-center">
+                                <div class="col-2">
+                                    <img src="https://imageio.forbes.com/specials-images/imageserve/621bc2697cca6e152b6f0b19/Companies-succeed-when-employee-engagement-is-a-priority-/960x0.jpg?format=jpg&width=960" class="img-fluid icon" alt="SimplCalc Icon">
+                                </div>
+                                <div class="col-7 p-0">
+                                    <span class="card-title title">Employee Engage</span>
+                                    <p class="stacks m-0">JAVA | SQL | HTML | CSS | JS</p>
+                                </div>
+                                <div class="col-3 align-middle">
+                                    <button class="btn btn-sm in-progress cursor-not-allowed">In Progress</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description-container">
+                            <p class="description">Employee engage where we can collect all employee data for organization use.</p>
+                        </div>
+                        <div class="banner-container cursor-not-allowed">
+                            <div class="overlay">
+                                <i class="bi bi-hourglass-split"></i>
+                            </div>
+                            <img src="https://imageio.forbes.com/specials-images/imageserve/621bc2697cca6e152b6f0b19/Companies-succeed-when-employee-engagement-is-a-priority-/960x0.jpg?format=jpg&width=960" class="card-img-top banner" alt="SimplCalc Banner">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="container">
+            <h6 class="text-center"><span class="btn btn-sm theme-button theme-text">What they Think?</span></h6>
+            <h2 class="section-heading text-center">Testimonials</h2>
+            <p class="text-center muted-text mt-3 mb-4">What do my friends and clients say about me.</p>
+            <div class="row mt-4 gy-4" data-aos="fade-down" data-aos-delay="200">
+                <div class="col-md-12">
+                    <div id="testimonial-slider" class="owl-carousel">
+                        <div class="testimonial">
+                            <p class="description">
+                                Your brilliance is truly inspiring. You bring so much positivity and creativity wherever you go. Keep shining brightly! Working with you has been always an incredible experience.
+                            </p>
+                            <div class="pic">
+                                <img src="/assets/images/testimonials/Moinudeen.webp" alt="Moinudeen Pic">
+                            </div>
+                            <div class="detail">
+                                <h4 class="name">Moinudeen</h4>
+                                <small class="role" >Programmer</small>
+                            </div>
+                        </div>
+         
+                        <div class="testimonial">
+                            <p class="description">
+                                Bro, I admire your hard work. Your efforts speak volumes about you. You're amazing! Much love, bro! 🤜🤛
+                            </p>
+                            <div class="pic">
+                                <img src="/assets/images/testimonials/Nadeem.webp" alt="Nadeem Pic">
+                            </div>
+                            <div class="detail">
+                                <h4 class="name">Nadeem</h4>
+                                <small class="role">Friend</small>
+                            </div>
+                        </div>
+
+                       <div class="testimonial">
+                            <p class="description">
+                                Vijay's commitment and hard work shine through in everything he does.
+                            </p>
+                            <div class="pic">
+                                <img src="/assets/images/testimonials/J.svg" alt="Jwala Pratap Pic" class="">
+                            </div>
+                            <div class="detail">
+                                <h4 class="name">Jwala Pratap</h4>
+                                <small class="role">Web Developer</small>
+                            </div>
+                        </div>
+
+                        <div class="testimonial">
+                            <p class="description">
+                                Working with Vijay has been an incredible experience. His dedication in web development truly shine through his work. He has a remarkable ability to turn ideas into reality & crafting websites that exceed expectations.
+                            </p>
+                            <div class="pic">
+                                <img src="/assets/images/testimonials/Rahul.webp" alt="Rahul Pic">
+                            </div>
+                            <div class="detail">
+                                <h4 class="name">Rahul Sharma</h4>
+                                <small class="role">Software Developer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h6 class="text-center"><span class="btn btn-sm theme-button theme-text">What's next!</span></h6>
+            <h2 class="section-heading text-center">Get In Touch</h2>
+            <p class="text-center muted-text mt-3 mb-4">Interested in working together? We should schedule a time to chat. I'll bring the coffee.</p>
+            <div class="row justify-content-center" data-aos="fade-down" data-aos-delay="500">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <form action="#" method="POST">
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name *" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email *" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="subject" name="subject"  placeholder="Subject *" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea style="resize: none;" class="form-control" id="message" name="message" rows="5" placeholder="Your message *" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn primary-bg-btn mt-2">Send Message <i class="bi bi-arrow-up-right"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <p class="text-center copyright-text">Made with ❤️‍🔥 by Appash</p>
+        </div>
+    </footer>
+
+    <button class="btn" id="backToTopButton" onclick="scrollToTop()" style="display: none;">
+        <span aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+              </svg>
+        </span>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="assets/js/aos.js" defer></script>
+    <script src="assets/js/jquery-3.7.1.min.js" defer></script>
+    <script src="assets/js/owl.carousel.min.js" defer></script>
+    <script src="assets/js/bootstrap.min.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/email.js" defer></script>
+
+</body>
+</html>
