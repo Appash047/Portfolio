@@ -232,6 +232,12 @@
    * Initiate TagCanvas
    */
   window.addEventListener('load', function() {
+    const isMobileTag = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobileTag) {
+      const cont = document.getElementById('myCanvasContainer');
+      if (cont) cont.style.display = 'none';
+      return;
+    }
     try {
       TagCanvas.Start('myCanvas','iconList',{
         textColour: null,
@@ -326,3 +332,12 @@ const soundCloud = document.querySelector('.sound-cloud');
         localStorage.setItem('musicCurrentTime', myAudio.currentTime.toString());
       }
     });
+
+  // Add lazy loading to images without loading attribute (non-header)
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('img:not([loading])').forEach((img) => {
+      if (!img.closest('header')) {
+        img.setAttribute('loading', 'lazy');
+      }
+    });
+  });
