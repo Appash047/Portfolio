@@ -359,9 +359,25 @@ const soundCloud = document.querySelector('.sound-cloud');
       }
     }
 
-    // Save current playback time before the user navigates away or closes the tab
-    window.addEventListener('beforeunload', () => {
-      if (!myAudio.paused) {
-        localStorage.setItem('musicCurrentTime', myAudio.currentTime.toString());
+    // Continuously persist playback time to resume seamlessly across pages
+    let lastSavedTime = 0;
+    const persistTime = () => {
+      try {
+        // Save at ~1s granularity to reduce writes
+        if (Math.abs(myAudio.currentTime - lastSavedTime) >= 1) {
+          localStorage.setItem('musicCurrentTime', myAudio.currentTime.toString());
+          lastSavedTime = myAudio.currentTime;
+        }
+      } catch (e) {}
+    };
+    myAudio.addEventListener('timeupdate', persistTime);
+
+    // Save when tab is hidden or page unloads
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        try { localStorage.setItem('musicCurrentTime', myAudio.currentTime.toString()); } catch (e) {}
       }
+    });
+    window.addEventListener('beforeunload', () => {
+      try { localStorage.setItem('musicCurrentTime', myAudio.currentTime.toString()); } catch (e) {}
     });
