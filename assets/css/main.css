@@ -3068,6 +3068,10 @@ body.light-mode .contact .contact-form .btn:hover {
   #iconList.bright-icons {
     display: none !important;
   }
+  #myCanvasContainer,
+  #myCanvas {
+    display: none !important;
+  }
   #sound,
   #sound audio,
   audio {

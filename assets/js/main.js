@@ -267,9 +267,17 @@ const soundCloud = document.querySelector('.sound-cloud');
     const savedPlaybackState = localStorage.getItem('musicPlaybackState');
     const savedCurrentTime = parseFloat(localStorage.getItem('musicCurrentTime'));
 
-    if (savedPlaybackState === 'on') {
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      // Always start OFF on mobile to prevent auto sound
+      myAudio.pause();
+      on.style.display = 'none';
+      off.style.display = 'inline';
+      soundCloud.style.color = '#f50057';
+      localStorage.setItem('musicPlaybackState', 'off');
+    } else if (savedPlaybackState === 'on') {
       myAudio.currentTime = savedCurrentTime || 0;
-      myAudio.play().catch(e => console.log("Autoplay prevented: ", e)); // Handle autoplay policy
+      myAudio.play().catch(e => console.log("Autoplay prevented: ", e));
       on.style.display = 'inline';
       off.style.display = 'none';
       soundCloud.style.color = '#08fdd8';
