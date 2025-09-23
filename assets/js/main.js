@@ -232,6 +232,12 @@
    * Initiate TagCanvas
    */
   window.addEventListener('load', function() {
+    const isMobileTag = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobileTag) {
+      const cont = document.getElementById('myCanvasContainer');
+      if (cont) cont.style.display = 'none';
+      return;
+    }
     try {
       TagCanvas.Start('myCanvas','iconList',{
         textColour: null,
@@ -268,6 +274,10 @@ const soundCloud = document.querySelector('.sound-cloud');
     const savedCurrentTime = parseFloat(localStorage.getItem('musicCurrentTime'));
 
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // Ensure browser preloads audio for quicker resume
+    if (myAudio) {
+      myAudio.preload = 'auto';
+    }
     if (isMobile) {
       // Always start OFF on mobile to prevent auto sound
       myAudio.pause();
@@ -276,11 +286,52 @@ const soundCloud = document.querySelector('.sound-cloud');
       soundCloud.style.color = '#f50057';
       localStorage.setItem('musicPlaybackState', 'off');
     } else if (savedPlaybackState === 'on') {
-      myAudio.currentTime = savedCurrentTime || 0;
-      myAudio.play().catch(e => console.log("Autoplay prevented: ", e));
-      on.style.display = 'inline';
-      off.style.display = 'none';
-      soundCloud.style.color = '#08fdd8';
+      const resumeTime = isFinite(savedCurrentTime) ? savedCurrentTime : 0;
+      const showOnState = () => {
+        on.style.display = 'inline';
+        off.style.display = 'none';
+        soundCloud.style.color = '#08fdd8';
+      };
+
+      const tryResume = () => {
+        try {
+          if (!isNaN(resumeTime)) {
+            myAudio.currentTime = resumeTime;
+          }
+        } catch (e) {}
+        myAudio.muted = true; // improve autoplay success
+        const playPromise = myAudio.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise.then(() => {
+            myAudio.muted = false;
+            showOnState();
+          }).catch(() => {
+            // Fallback: wait for first user interaction to resume
+            const resumeOnInteract = () => {
+              try {
+                if (!isNaN(resumeTime)) {
+                  myAudio.currentTime = resumeTime;
+                }
+              } catch (e) {}
+              myAudio.muted = false;
+              myAudio.play().then(showOnState).catch(() => {});
+            };
+            window.addEventListener('pointerdown', resumeOnInteract, { once: true });
+            window.addEventListener('keydown', resumeOnInteract, { once: true });
+          });
+        } else {
+          // Older browsers
+          myAudio.muted = false;
+          showOnState();
+        }
+      };
+
+      // If metadata not yet loaded, wait before setting currentTime
+      if (myAudio.readyState < 1) {
+        myAudio.addEventListener('loadedmetadata', tryResume, { once: true });
+      } else {
+        tryResume();
+      }
     } else {
       myAudio.pause();
       on.style.display = 'none';
