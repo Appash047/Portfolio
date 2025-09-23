@@ -275,17 +275,29 @@ const soundCloud = document.querySelector('.sound-cloud');
       off.style.display = 'inline';
       soundCloud.style.color = '#f50057';
       localStorage.setItem('musicPlaybackState', 'off');
-    } else if (savedPlaybackState === 'on') {
-      myAudio.currentTime = savedCurrentTime || 0;
-      myAudio.play().catch(e => console.log("Autoplay prevented: ", e));
-      on.style.display = 'inline';
-      off.style.display = 'none';
-      soundCloud.style.color = '#08fdd8';
     } else {
-      myAudio.pause();
-      on.style.display = 'none';
-      off.style.display = 'inline';
-      soundCloud.style.color = '#f50057';
+      // Desktop: always try to play (from start) on each page load
+      try { myAudio.currentTime = 0; } catch(e) {}
+      const showOn = () => {
+        on.style.display = 'inline';
+        off.style.display = 'none';
+        soundCloud.style.color = '#08fdd8';
+        localStorage.setItem('musicPlaybackState', 'on');
+      };
+      const attemptPlay = () => {
+        const p = myAudio.play();
+        if (p && typeof p.then === 'function') {
+          p.then(showOn).catch(() => {
+            // Fallback: wait for first user interaction then play
+            const resume = () => { myAudio.play().then(showOn).catch(() => {}); };
+            window.addEventListener('pointerdown', resume, { once: true });
+            window.addEventListener('keydown', resume, { once: true });
+          });
+        } else {
+          showOn();
+        }
+      };
+      attemptPlay();
     }
 
     off.addEventListener('click', () => soundTrack('off'));
