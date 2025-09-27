@@ -253,7 +253,8 @@
       });
     } catch(e) {
       // Fallback for browsers that don't support canvas
-      document.getElementById('myCanvasContainer').style.display='none';
+      const myCanvasContainer = document.getElementById('myCanvasContainer');
+      if (myCanvasContainer) myCanvasContainer.style.display='none';
       console.log(e);
     }
   });
@@ -282,28 +283,23 @@ const soundCloud = document.querySelector('.sound-cloud');
       soundCloud.style.color = '#f50057';
       localStorage.setItem('musicPlaybackState', 'off');
     } else {
-      // Desktop: always try to play (from start) on each page load
-      try { myAudio.currentTime = 0; } catch(e) {}
-      const showOn = () => {
+      // Desktop: initialize to OFF unless saved state is ON
+      if (savedPlaybackState === 'on') {
         on.style.display = 'inline';
         off.style.display = 'none';
         soundCloud.style.color = '#08fdd8';
-        localStorage.setItem('musicPlaybackState', 'on');
-      };
-      const attemptPlay = () => {
-        const p = myAudio.play();
-        if (p && typeof p.then === 'function') {
-          p.then(showOn).catch(() => {
-            // Fallback: wait for first user interaction then play
-            const resume = () => { myAudio.play().then(showOn).catch(() => {}); };
-            window.addEventListener('pointerdown', resume, { once: true });
-            window.addEventListener('keydown', resume, { once: true });
-          });
-        } else {
-          showOn();
+        if (savedCurrentTime) {
+          myAudio.currentTime = savedCurrentTime;
         }
-      };
-      attemptPlay();
+        // Attempt to play, but if blocked, it will require user interaction
+        myAudio.play().catch(e => console.log("Autoplay prevented on load: ", e));
+      } else {
+        myAudio.pause();
+        on.style.display = 'none';
+        off.style.display = 'inline';
+        soundCloud.style.color = '#f50057';
+        localStorage.setItem('musicPlaybackState', 'off');
+      }
     }
 
     off.addEventListener('click', () => soundTrack('off'));
@@ -408,3 +404,5 @@ function draw() {
   requestAnimationFrame(draw);
 }
 draw();
+
+

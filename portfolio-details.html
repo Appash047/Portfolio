@@ -26,6 +26,54 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    body.blurred > *:not(.under-construction-overlay) {
+      filter: blur(5px);
+      pointer-events: none;
+    }
+    .under-construction-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .under-construction-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .under-construction-content h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .under-construction-content p {
+      font-size: 16px;
+      margin-bottom: 25px;
+      color: #666;
+    }
+    .under-construction-content .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .under-construction-content .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
 
   <!-- ======================================================= -->
 </head>
@@ -55,9 +103,10 @@
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/appash/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Appash047" class="github" target="_blank"><i class="bi bi-github"></i></a>
+        <a href="mailto:p.appash047@gmail.com" class="email"><i class="bi bi-envelope"></i></a>
+        <a href="https://www.instagram.com/appash_poojari/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
       </div>
 
       <div id="sound">
@@ -80,7 +129,7 @@
     </div>
   </header>
 
-  <main class="main">
+  <main class="main" id="page-content">
 
     <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
@@ -271,18 +320,29 @@
 
   </main>
 
-  <footer id="footer" class="footer">
+  <div class="under-construction-overlay">
+    <div class="under-construction-content">
+      <h2>We're adding all project links here.</h2>
+      <p>Please check back soon!</p>
+      <a href="portfolio.html" class="btn-primary">Go Back</a>
+    </div>
+  </div>
 
+  <footer id="footer" class="footer">
     <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">JavaDev</strong> <span>All Rights Reserved<br></span>
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> 
+          <strong class="px-1 sitename">
+            <a href="https://www.linkedin.com/in/appash/" target="_blank">Appash Poojari</a>
+          </strong> 
+          <span>All Rights Reserved<br></span>
         </p>
       </div>
       <div class="credits">
-        Designed by <a href="https://www.linkedin.com/in/appash/">Appasha Poojari</a>
+        Designed by 
+        <a href="https://javadev.example.com" target="_blank"><strong class="px-1 sitename">JavaDev</strong></a>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -307,6 +367,11 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('blurred');
+    });
+  </script>
 
 </body>
 
