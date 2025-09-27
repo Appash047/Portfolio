@@ -419,5 +419,32 @@ function draw() {
 }
 draw();
 
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
 
+    // Fill current time
+    let timeInput = this.querySelector('input[name="time"]');
+    timeInput.value = new Date().toLocaleString();
 
+    // Show loading
+    this.querySelector('.loading').style.display = 'block';
+    this.querySelector('.error-message').style.display = 'none';
+    this.querySelector('.sent-message').style.display = 'none';
+
+    emailjs.sendForm('service_dcl9m4s', 'template_458bzar', this)
+      .then(() => {
+        this.querySelector('.loading').style.display = 'none';
+        this.querySelector('.sent-message').style.display = 'block';
+        this.reset();
+        window.location.reload(); // Refresh the page
+      })
+      .catch((error) => {
+        this.querySelector('.loading').style.display = 'none';
+        this.querySelector('.error-message').innerText = 'Failed to send message. Please try again.';
+        this.querySelector('.error-message').style.display = 'block';
+        console.error(error);
+      });
+  });
+}

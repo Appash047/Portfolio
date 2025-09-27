@@ -48,7 +48,7 @@
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <h1 class="sitename"><span class="typed"
-            data-typed-items="Java Developer, Web Developer, Cloud Engineer, AI Developer"></span></h1>
+          data-typed-items="Java Developer, Web Developer, Cloud Engineer, AWS Certified"></span></h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -265,7 +265,7 @@
                   <p>"Partnering for our web development project was an outstanding experience. The team delivered a high-quality, scalable solution that perfectly met our business needs and exceeded expectations."</p>
                 </div>
                 <div class="story-author">
-                  <img src="assets/img/person/person-m-8.webp" alt="Client Testimonial" class="author-avatar">
+                  <img src="assets/img/person/dummy-img.png" alt="Client Testimonial" class="author-avatar">
                   <div class="author-details">
                     <h5>Satisfied Client</h5>
                     <span>Project Manager</span>
@@ -291,17 +291,13 @@
                   <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</p>
                 </div>
 
-                <form action="forms/consultation.php" method="post" class="php-email-form">
+                <form id="contact-form" class="php-email-form">
                   <div class="form-group">
                     <input type="text" name="name" class="form-input" placeholder="Full Name" required="">
                   </div>
 
                   <div class="form-group">
                     <input type="email" name="email" class="form-input" placeholder="Email Address" required="">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="tel" name="phone" class="form-input" placeholder="Phone Number">
                   </div>
 
                   <input type="hidden" name="subject" value="Web Development Consultation">
@@ -344,7 +340,7 @@
       </div>
       <div class="credits">
         Designed by 
-        <a href="https://javadev.example.com" target="_blank"><strong class="px-1 sitename">JavaDev</strong></a>
+        <a href="#" ><strong class="px-1 sitename">JavaDev</strong></a>
       </div>
     </div>
   </footer>
@@ -360,6 +356,10 @@
   <!-- Add TagCanvas library once in your page footer or <head> -->
   <script src="https://www.goat1000.com/tagcanvas.min.js" defer></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("rUEpX7Glc_UARwdWQ"); // your public key
+  </script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
   <script src="assets/vendor/aos/aos.js" defer></script>

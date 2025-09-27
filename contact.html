@@ -48,8 +48,8 @@
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <h1 class="sitename"><span class="typed"
-            data-typed-items="Java Developer, Web Developer, Cloud Engineer, AI Developer"></span></h1>
-      </a>
+          data-typed-items="Java Developer, Web Developer, Cloud Engineer, AWS Certified"></span></h1>
+        </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -197,7 +197,7 @@
       </div>
       <div class="credits">
         Designed by 
-        <a href="https://javadev.example.com" target="_blank"><strong class="px-1 sitename">JavaDev</strong></a>
+        <a href="#" ><strong class="px-1 sitename">JavaDev</strong></a>
       </div>
     </div>
   </footer>
@@ -214,38 +214,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
     emailjs.init("rUEpX7Glc_UARwdWQ"); // your public key
-  </script>
-  
-  <script>
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-  
-        // Fill current time
-        let timeInput = this.querySelector('input[name="time"]');
-        timeInput.value = new Date().toLocaleString();
-  
-        // Show loading
-        this.querySelector('.loading').style.display = 'block';
-        this.querySelector('.error-message').style.display = 'none';
-        this.querySelector('.sent-message').style.display = 'none';
-  
-        emailjs.sendForm('service_dcl9m4s', 'template_458bzar', this)
-          .then(() => {
-            this.querySelector('.loading').style.display = 'none';
-            this.querySelector('.sent-message').style.display = 'block';
-            this.reset();
-            window.location.reload(); // Refresh the page
-          })
-          .catch((error) => {
-            this.querySelector('.loading').style.display = 'none';
-            this.querySelector('.error-message').innerText = 'Failed to send message. Please try again.';
-            this.querySelector('.error-message').style.display = 'block';
-            console.error(error);
-          });
-      });
-    }
   </script>
 
   <!-- Vendor JS Files -->
