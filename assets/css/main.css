@@ -90,10 +90,11 @@ h6 {
   display: none;
   background: #df1529;
   color: #ffffff;
-  text-align: left;
+  text-align: center; /* Changed from left to center */
   padding: 15px;
   margin-bottom: 24px;
   font-weight: 600;
+  border-radius: 5px; /* Added border-radius for consistency */
 }
 
 .php-email-form .sent-message {
@@ -104,6 +105,7 @@ h6 {
   padding: 15px;
   margin-bottom: 24px;
   font-weight: 600;
+  border-radius: 5px; /* Added border-radius for consistency */
 }
 
 .php-email-form .loading {
@@ -112,6 +114,7 @@ h6 {
   text-align: center;
   padding: 15px;
   margin-bottom: 24px;
+  border-radius: 5px; /* Added border-radius for consistency */
 }
 
 .php-email-form .loading:before {
