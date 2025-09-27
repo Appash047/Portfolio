@@ -232,30 +232,31 @@
    * Initiate TagCanvas
    */
   window.addEventListener('load', function() {
-    const isMobileTag = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobileTag) {
-      const cont = document.getElementById('myCanvasContainer');
-      if (cont) cont.style.display = 'none';
-      return;
-    }
-    try {
-      TagCanvas.Start('myCanvas','iconList',{
-        textColour: null,
-        outlineThickness: 1,
-        maxSpeed: 0.05,
-        freezeActive: true,
-        shuffleTags: true,
-        shape: 'sphere',
-        zoom: 0.9,
-        noSelect: true,
-        pinchZoom: true,
-        wheelZoom: false
-      });
-    } catch(e) {
-      // Fallback for browsers that don't support canvas
-      const myCanvasContainer = document.getElementById('myCanvasContainer');
-      if (myCanvasContainer) myCanvasContainer.style.display='none';
-      console.log(e);
+    const myCanvasContainer = document.getElementById('myCanvasContainer');
+    if (myCanvasContainer) {
+      const isMobileTag = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobileTag) {
+        myCanvasContainer.style.display = 'none';
+        return;
+      }
+      try {
+        TagCanvas.Start('myCanvas','iconList',{
+          textColour: null,
+          outlineThickness: 1,
+          maxSpeed: 0.05,
+          freezeActive: true,
+          shuffleTags: true,
+          shape: 'sphere',
+          zoom: 0.9,
+          noSelect: true,
+          pinchZoom: true,
+          wheelZoom: false
+        });
+      } catch(e) {
+        // Fallback for browsers that don't support canvas
+        myCanvasContainer.style.display='none';
+        console.log(e);
+      }
     }
   });
 
@@ -267,39 +268,32 @@ const soundCloud = document.querySelector('.sound-cloud');
     const on = document.querySelector('#on');
     const myAudio = document.querySelector('#myAudio');
 
-    // start paused
-    // myAudio.pause(); // Remove this line as we'll handle initial state with localStorage
+    let userInitiatedPlayback = false; // New flag to track if user explicitly turned on music
 
     // Load sound state from localStorage on page load
     const savedPlaybackState = localStorage.getItem('musicPlaybackState');
     const savedCurrentTime = parseFloat(localStorage.getItem('musicCurrentTime'));
 
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobile) {
-      // Always start OFF on mobile to prevent auto sound
+
+    // Initialize UI based on saved state, but don't autoplay
+    if (isMobile || savedPlaybackState !== 'on') {
+      // Default to OFF for mobile or if saved state is not 'on'
       myAudio.pause();
       on.style.display = 'none';
       off.style.display = 'inline';
       soundCloud.style.color = '#f50057';
       localStorage.setItem('musicPlaybackState', 'off');
-    } else {
-      // Desktop: initialize to OFF unless saved state is ON
-      if (savedPlaybackState === 'on') {
-        on.style.display = 'inline';
-        off.style.display = 'none';
-        soundCloud.style.color = '#08fdd8';
-        if (savedCurrentTime) {
-          myAudio.currentTime = savedCurrentTime;
-        }
-        // Attempt to play, but if blocked, it will require user interaction
-        myAudio.play().catch(e => console.log("Autoplay prevented on load: ", e));
-      } else {
-        myAudio.pause();
-        on.style.display = 'none';
-        off.style.display = 'inline';
-        soundCloud.style.color = '#f50057';
-        localStorage.setItem('musicPlaybackState', 'off');
+    } else if (savedPlaybackState === 'on') {
+      // Desktop: if saved state is ON, set UI to ON but don't play automatically
+      on.style.display = 'inline';
+      off.style.display = 'none';
+      soundCloud.style.color = '#08fdd8';
+      if (savedCurrentTime) {
+        myAudio.currentTime = savedCurrentTime;
       }
+      // Do NOT call myAudio.play() here. It will be handled by user interaction.
+      userInitiatedPlayback = true; // Assume user intended to play if saved state is 'on'
     }
 
     off.addEventListener('click', () => soundTrack('off'));
@@ -307,20 +301,40 @@ const soundCloud = document.querySelector('.sound-cloud');
 
     function soundTrack(state) {
       if (state === 'off') {
+        // User wants to turn ON the sound
         on.style.display = 'inline';
         off.style.display = 'none';
         soundCloud.style.color = '#08fdd8';
-        myAudio.play().catch(e => console.log("Autoplay prevented: ", e));
+        myAudio.play().catch(error => {
+          console.log('Autoplay prevented. User interaction required.', error);
+          // If autoplay is prevented, revert UI to OFF state
+          on.style.display = 'none';
+          off.style.display = 'inline';
+          soundCloud.style.color = '#f50057';
+          localStorage.setItem('musicPlaybackState', 'off');
+        });
         localStorage.setItem('musicPlaybackState', 'on');
+        userInitiatedPlayback = true;
       } else {
+        // User wants to turn OFF the sound
         on.style.display = 'none';
         off.style.display = 'inline';
         soundCloud.style.color = '#f50057';
         myAudio.pause();
         localStorage.setItem('musicPlaybackState', 'off');
         localStorage.setItem('musicCurrentTime', myAudio.currentTime.toString()); // Save current time on pause
+        userInitiatedPlayback = false;
       }
     }
+
+    // Add a general click listener to attempt playing if user has initiated playback AND it's currently paused (e.g. after navigating to a new page where autoplay was blocked)
+    document.addEventListener('click', () => {
+      if (userInitiatedPlayback && myAudio.paused) {
+        myAudio.play().catch(error => {
+          console.log('Autoplay prevented by browser, waiting for explicit user gesture.', error);
+        });
+      }
+    });
 
     // Save current playback time before the user navigates away or closes the tab
     window.addEventListener('beforeunload', () => {
@@ -404,5 +418,6 @@ function draw() {
   requestAnimationFrame(draw);
 }
 draw();
+
 
 
