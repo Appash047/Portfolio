@@ -1734,6 +1734,7 @@ section,
   .services .service-item {
     flex-direction: column;
     text-align: center;
+    justify-content: center; /* Added to center content within the column layout */
   }
 
   .services .service-item::before {
@@ -1748,8 +1749,7 @@ section,
   }
 
   .services .service-icon {
-    margin-right: 0;
-    margin-bottom: 1.25rem;
+    margin: 0 auto 1.25rem; /* Centered for column layout */
   }
 
   .services .service-link {
