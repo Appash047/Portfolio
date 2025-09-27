@@ -3081,3 +3081,15 @@ body.light-mode .contact .contact-form .btn:hover {
     display: none !important;
   }
 }
+
+  /* canvas sits behind content but above background */
+    #c {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; /* behind your content but above bg image */
+      pointer-events: none; /* mouse clicks pass through */
+      display: block;
+    }

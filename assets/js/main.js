@@ -341,3 +341,70 @@ const soundCloud = document.querySelector('.sound-cloud');
       }
     });
   });
+
+ const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+});
+
+// mouse influence
+let mouse = { x: w/2, y: h/2 };
+window.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+// create particles
+const particles = [];
+for (let i = 0; i < 800; i++) {
+  particles.push({
+    x: Math.random()*w,
+    y: Math.random()*h,
+    vx: 0,
+    vy: 0
+  });
+}
+
+function draw() {
+  // clear instead of black overlay
+  ctx.clearRect(0,0,w,h);
+
+  ctx.strokeStyle = 'rgba(255,0,0,0.7)';
+  ctx.lineWidth = 1;
+
+  for (let p of particles) {
+    let dx = mouse.x - p.x;
+    let dy = mouse.y - p.y;
+    let dist = Math.sqrt(dx*dx+dy*dy) + 0.001;
+    let force = 300 / dist;
+    let angle = Math.atan2(dy, dx) + Math.sin(Date.now()*0.001)*0.2;
+
+    p.vx += Math.cos(angle)*force*0.01;
+    p.vy += Math.sin(angle)*force*0.01;
+
+    p.vx *= 0.95;
+    p.vy *= 0.95;
+
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if(p.x<0 || p.x>w || p.y<0 || p.y>h){
+      p.x = Math.random()*w;
+      p.y = Math.random()*h;
+      p.vx = p.vy = 0;
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    ctx.lineTo(p.x - p.vx*2, p.y - p.vy*2);
+    ctx.stroke();
+  }
+
+  requestAnimationFrame(draw);
+}
+draw();
